@@ -14,8 +14,8 @@ from django.urls import reverse
 from opaque_keys.edx.keys import CourseKey, UsageKey
 from opaque_keys.edx.locator import BlockUsageLocator, CourseLocator
 
-from lms.djangoapps.courseware.url_helpers import get_redirect_url
-from student.tests.factories import UserFactory
+from openedx.features.course_experience.url_helpers import get_courseware_url
+from common.djangoapps.student.tests.factories import UserFactory
 from xmodule.modulestore.tests.django_utils import (
     TEST_DATA_MIXED_MODULESTORE,
     ModuleStoreTestCase
@@ -159,4 +159,4 @@ class TestEolJumpTo(ModuleStoreTestCase):
         )
         expected_url += "?{}".format(urlencode({'activate_block_id': six.text_type(staff_only_vertical.location)}))
 
-        self.assertEqual(expected_url, get_redirect_url(course_key, usage_key, request))
+        self.assertEqual(expected_url, get_courseware_url(usage_key, request))
