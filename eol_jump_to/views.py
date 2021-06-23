@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from lms.djangoapps.courseware.url_helpers import get_redirect_url
+from openedx.features.course_experience.url_helpers import get_courseware_url
 from xmodule.modulestore.exceptions import ItemNotFoundError, NoPathToItem
 
 from openedx.features.course_experience import course_home_url_name
@@ -28,7 +28,7 @@ def eol_jump_to(request, course_id, location):
     except InvalidKeyError:
         raise Http404(u"Invalid course_key or usage_key")
     try:
-        redirect_url = get_redirect_url(course_key, usage_key, request)
+        redirect_url = get_courseware_url(usage_key, request)
     except ItemNotFoundError:
         # If item not found redirect to course home page
         redirect_url = reverse(course_home_url_name(course_key), kwargs={'course_id': course_id})
