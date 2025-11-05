@@ -1,15 +1,25 @@
 name: Python application
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'eol-release/*'
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - 'eol-release/*'
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run Tests
-      run: |
-        cd .github/
-        docker-compose run lms /openedx/requirements/eol_jump_to/.github/test.sh
+    uses: eol-uchile/workflow-commons/.github/workflows/pythonapp.yml@2.0.0
+    with:
+      app_id: ${{ vars.EOLITO_BOT_APP_ID }}
+      django-lms: true
+      django-cms: false
+      platform-eol: true
+      platform-openuchile: true
+    secrets:
+      private_key: ${{ secrets.EOLITO_BOT_PRIVATE_KEY }}
