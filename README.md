@@ -1,6 +1,8 @@
 # EOL JUMP TO (duplicate of edX jump_to)
 
-![https://github.com/eol-uchile/eol_jump_to/actions](https://github.com/eol-uchile/eol_jump_to/workflows/Python%20application/badge.svg)
+![Coverage Status](/coverage-badge.svg)
+
+![https://github.com/eol-uchile/eol_jump_to/actions](https://github.com/eol-uchile/eol_jump_to/workflows/Python%20application/badge.svg) 
 
 Redirect student to specific block if has access. Otherwise redirect to course index. 
 
