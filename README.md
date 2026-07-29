@@ -4,7 +4,9 @@
 
 ![https://github.com/eol-uchile/eol_jump_to/actions](https://github.com/eol-uchile/eol_jump_to/workflows/Python%20application/badge.svg) 
 
-Redirect student to specific block if has access. Otherwise redirect to course index. 
+Redirect student to specific block if has access. Otherwise redirect to course index.
+Specifically, in cases where a student has completed an xblock and it has been deleted, so that a 404 page is not displayed.
+
 
 ## Install
 
